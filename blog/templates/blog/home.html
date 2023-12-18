@@ -12,6 +12,7 @@
       <p class="article-content">{{ post.content|truncatewords:20 }}</p>
     </div>
   </article>
+
 {% endfor %}
 {% if is_paginated %}
   {% if page_obj.has_previous %}
@@ -32,4 +33,5 @@
     <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-dark mb-4">Last</a>
   {% endif %}
 {% endif %}
+
 {% endblock content %}

@@ -12,8 +12,15 @@ class PostListView(generic.ListView):
     template_name = "blog/home.html"
     model = Post
     context_object_name = "posts"
-    ordering = ["-date_posted"]
+    # ordering = ["-date_posted"]
     paginate_by = 5
+
+    def get_queryset(self):
+        if "q" in self.request.GET:
+            return Post.objects.filter(
+                title__icontains=self.request.GET.get("q")
+            ).order_by("-date_posted")
+        return Post.objects.all().order_by("-date_posted")
 
 
 class UserPostListView(generic.ListView):
