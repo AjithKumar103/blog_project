@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-b9oe@@@&p7bhmq&s%31fharh3p(p$sm@b29qxlj!rxrdeuk195"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -79,13 +79,17 @@ WSGI_APPLICATION = "blog_project.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
+    # "default": {
+    #     "ENGINE": "django.db.backends.postgresql",
+    #     "NAME": os.environ.get("DB_NAME"),
+    #     "PASSWORD": os.environ.get("DB_PASSWORD"),
+    #     "USER": os.environ.get("DB_USER"),
+    #     "HOST": os.environ.get("DB_HOST", "localhost"),
+    #     "PORT": os.environ.get("DB_PORT", "5432"),
+    # }
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("DB_NAME"),
-        "PASSWORD": os.environ.get("DB_PASSWORD"),
-        "USER": os.environ.get("DB_USER"),
-        "HOST": os.environ.get("DB_HOST", "localhost"),
-        "PORT": os.environ.get("DB_PORT", "5432"),
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
